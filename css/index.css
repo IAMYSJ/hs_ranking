@@ -23,8 +23,9 @@ body {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
-body > .container {
+body > .container-fluid {
   padding: 60px 15px 0;
+  height: 700px;
 }
 
 .footer > .container {

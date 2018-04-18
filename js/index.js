@@ -1,50 +1,40 @@
-function doFirst(){
-	card = document.getElementById('card');
-	card.addEventListener('dragstart', dragstart, false);
-	card.addEventListener('dragend', dragend, false);
+window.addEventListener('load', function() {
+    card = document.getElementById('card');
+	card.addEventListener('dragend', function() {
+        setTimeout(function() {
+            card.style.visibility = 'visible';
+        }, 500);
+    }, false);
     
     // Drop Left
     leftbox = document.getElementById('leftbox');
-	leftbox.addEventListener('dragenter', function(e) {
-        e.preventDefault();
-    }, false);
 	leftbox.addEventListener('dragover', function(e) {
         e.preventDefault();
-    }, false); 
-    leftbox.addEventListener('drop', dropLeft, false);
+        leftbox.style.background = 'lightblue';
+    }, false);
+    leftbox.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        leftbox.style.background = 'white';
+    }, false);
+    leftbox.addEventListener('drop', function(e) {
+        //e.preventDefault();
+        card.style.visibility = 'hidden';
+        leftbox.style.background = 'white';
+    }, false);
     
     // Drop Right
     rightbox = document.getElementById('rightbox');
-    rightbox.addEventListener('dragenter', function(e) {
-        e.preventDefault();
-    }, false);
 	rightbox.addEventListener('dragover', function(e) {
         e.preventDefault();
-    }, false); 
-	rightbox.addEventListener('drop', dropRight, false);
-}
-
-function dragstart(e) {
-	var data = '<img src="https://fakeimg.pl/300x350/">';
-	e.dataTransfer.setData('image/jpg', data);
-}
-
-function dragend() {
-	setTimeout(function() {
-        card.style.visibility = "visible";
-    }, 500);
-}
-
-function dropLeft(e) {
-    //e.preventDefault();
-    card.style.visibility = "hidden";
-	// leftbox.innerHTML = e.dataTransfer.getData('image/jpg');
-}
-
-function dropRight(e) {
-    //e.preventDefault();
-    card.style.visibility = "hidden";
-	// rightbox.innerHTML = e.dataTransfer.getData('image/jpg');
-}
-
-window.addEventListener('load', doFirst, false);
+        rightbox.style.background = 'lightblue';
+    }, false);
+    rightbox.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        rightbox.style.background = 'white';
+    }, false);
+	rightbox.addEventListener('drop', function(e) {
+        //e.preventDefault();
+        card.style.visibility = 'hidden';
+        rightbox.style.background = 'white';
+    }, false);
+}, false);
