@@ -1,1 +1,1 @@
-"# HS_ranking" 
+# HS_ranking
